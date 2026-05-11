@@ -116,17 +116,22 @@
 
 
 
+
+
+
+
+
 const express = require("express");
 const fileUpload = require("express-fileupload");
 const path = require("path");
-require('dotenv').config();
+require("dotenv").config();
 const cors = require("cors");
 const session = require("express-session");
 
 const adminRouter = require("./routes/admin");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // middlewares
 app.use(cors());
@@ -134,7 +139,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(fileUpload());
 
-// session MUST be before routes
+// session
 app.use(
   session({
     secret: "admin_secret",
@@ -143,23 +148,26 @@ app.use(
   })
 );
 
-// static
+// static folders
 app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
 app.use(express.static(path.join(__dirname, "public")));
+
+// ✅ React build folder
+app.use(express.static(path.join(__dirname, "build")));
 
 // ejs
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-// root redirect
-app.get("/", (req, res) => {
-  res.redirect("/admin/login");
-});
-
 // admin routes
 app.use("/admin", adminRouter);
 
+// ✅ React frontend route
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
 // server
 app.listen(PORT, () => {
-  console.log("Server running on http://localhost:" + PORT);
+  console.log(`Server running on port ${PORT}`);
 });
