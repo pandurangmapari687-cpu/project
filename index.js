@@ -152,7 +152,7 @@ app.use(
 app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
 app.use(express.static(path.join(__dirname, "public")));
 
-// ✅ React build folder
+// React build folder
 app.use(express.static(path.join(__dirname, "build")));
 
 // ejs
@@ -162,8 +162,8 @@ app.set("views", path.join(__dirname, "views"));
 // admin routes
 app.use("/admin", adminRouter);
 
-// ✅ React frontend route
-app.get("*", (req, res) => {
+// React frontend route
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
