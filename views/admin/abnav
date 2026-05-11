@@ -1,0 +1,206 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* Sidebar Styles */
+    #adminSidebar {
+      min-width: 220px;
+      max-width: 220px;
+      min-height: 100vh;
+      background: #212529;
+      color: #fff;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 100;
+      transition: left 0.3s;
+    }
+
+    #adminSidebar .nav-link {
+      color: #fff;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    #adminSidebar .nav-link.active,
+    #adminSidebar .nav-link:hover {
+      background: #343a40;
+      color: #ffc107;
+    }
+
+    #adminContent {
+      margin-left: 220px;
+      padding: 2rem;
+    }
+
+    .submenu {
+      list-style: none;
+      padding-left: 30px;
+    }
+
+    .submenu .nav-link {
+      font-size: 14px;
+      padding: 6px 10px;
+    }
+
+    .sidebar-toggle {
+      display: none;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 200;
+      font-size: 1.5rem;
+      color: #ffc107;
+    }
+
+    @media (max-width: 768px) {
+      #adminSidebar {
+        left: -220px;
+      }
+      #adminSidebar.active {
+        left: 0;
+      }
+      #adminContent {
+        margin-left: 0;
+      }
+      .sidebar-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <button class="btn sidebar-toggle d-md-none">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Sidebar -->
+  <nav id="adminSidebar" class="d-flex flex-column p-3 bg-dark text-white" style="min-height:100vh;">
+    <h3 class="mb-4 text-warning">
+      <i class="fas fa-cogs"></i> Admin Panel
+    </h3>
+
+    <ul class="nav nav-pills flex-column mb-auto">
+
+      <li class="nav-item">
+        <a href="/admin" class="nav-link active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+      </li>
+
+      <!-- Slider Menu -->
+      <li>
+        <a href="#" class="nav-link text-white"><i class="fas fa-images"></i> Slider <i class="fas fa-chevron-down ms-auto"></i></a>
+        <ul class="submenu">
+          <li><a href="/admin/slider" class="nav-link">Add Slider</a></li>
+          <li><a href="/admin/slider_list" class="nav-link">List Sliders</a></li>
+        </ul>
+      </li>
+
+      <!-- Machine -->
+     <li class="nav-item">
+  <a href="#machineSubmenu" data-bs-toggle="collapse" class="nav-link text-white">
+    <i class="fas fa-industry"></i> Machine
+    <i class="fas fa-caret-down float-end"></i>
+  </a>
+
+  <ul id="machineSubmenu" class="collapse list-unstyled ps-3">
+    <li><a href="/admin/machine" class="nav-link text-white"><i class="fas fa-plus"></i> Add Machine</a></li>
+    <li><a href="/admin/machine_list" class="nav-link text-white"><i class="fas fa-list"></i> List Machine</a></li>
+  </ul>
+</li>
+
+
+
+      <!-- About -->
+      <li>
+        <a href="/admin/about" class="nav-link text-white"><i class="fas fa-info-circle"></i> About</a>
+      </li>
+
+      <!-- Counter -->
+      <li>
+        <a href="/admin/counter" class="nav-link text-white"><i class="fas fa-chart-bar"></i> Counter</a>
+      </li>
+
+      <!-- Working Process -->
+      <li>
+        <a href="/admin/workingprocess" class="nav-link text-white"><i class="fas fa-project-diagram"></i> Working Process</a>
+      </li>
+
+      <!-- News Blog -->
+      <li>
+        <a href="/admin/newsblog" class="nav-link text-white"><i class="fas fa-newspaper"></i> News Blog</a>
+      </li>
+
+      <!-- Testimonials -->
+      <li>
+        <a href="/admin/testimonials" class="nav-link text-white"><i class="fas fa-comments"></i> Testimonials</a>
+      </li>
+
+      <!-- FAQ -->
+      <li>
+        <a href="/admin/faq" class="nav-link text-white"><i class="fas fa-question-circle"></i> FAQ</a>
+      </li>
+
+      <!-- Services -->
+      <li>
+        <a href="/admin/services" class="nav-link text-white"><i class="fas fa-briefcase"></i> Services</a>
+      </li>
+
+      <!-- Contact -->
+      <li>
+        <a href="/admin/contact" class="nav-link text-white"><i class="fas fa-envelope"></i> Contact</a>
+      </li>
+
+      <!-- Gallery -->
+      <li>
+        <a href="/admin/gallery" class="nav-link text-white"><i class="fas fa-photo-film"></i> Gallery</a>
+      </li>
+
+      <!-- Plants -->
+      <li>
+        <a href="/admin/plants" class="nav-link text-white"><i class="fas fa-leaf"></i> Plants</a>
+      </li>
+
+      <!-- Portfolio -->
+      <li>
+        <a href="/admin/portfolio" class="nav-link text-white"><i class="fas fa-briefcase"></i> Portfolio</a>
+      </li>
+
+      <!-- Settings -->
+      <li>
+        <a href="/admin/settings" class="nav-link text-white"><i class="fas fa-sliders-h"></i> Settings</a>
+      </li>
+
+      <!-- Login -->
+      <li>
+        <a href="/admin/login" class="nav-link text-white"><i class="fas fa-user"></i> Login</a>
+      </li>
+
+      <!-- Logout -->
+      <li>
+        <a href="/admin/logout" class="nav-link text-white"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </li>
+
+    </ul>
+  </nav>
+
+  <script>
+    // Sidebar Toggle (Mobile)
+    document.querySelector('.sidebar-toggle').addEventListener('click', () => {
+      document.querySelector('#adminSidebar').classList.toggle('active');
+    });
+  </script> -->

@@ -1,0 +1,23 @@
+<h2>Contact Messages</h2>
+
+<table border="1" cellpadding="10">
+
+<tr>
+  <th>Name</th>
+  <th>Email</th>
+  <th>Subject</th>
+  <th>Message</th>
+</tr>
+
+<% messages.forEach((m)=> { %>
+
+<tr>
+  <td><%= m.name %></td>
+  <td><%= m.email %></td>
+  <td><%= m.subject %></td>
+  <td><%= m.message %></td>
+</tr>
+
+<% }) %>
+
+</table>

@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.admin-sidebar {
+  width: 260px;
+  min-height: 100vh;
+  background: linear-gradient(180deg,#0d6efd 0%, #0b5ed7 100%);
+  box-shadow: 0 2px 12px rgba(13,110,253,0.12);
+  padding: 20px;
+}
+
+.admin-sidebar .brand { gap: 8px; }
+.admin-sidebar .nav-link { color: #fff; margin-bottom: 4px; border-radius: 6px; padding: 10px 12px; transition: 0.2s; }
+.admin-sidebar .nav-link:hover { background: rgba(255,255,255,0.1); }
+.admin-sidebar .nav-link.active { background: rgba(255,255,255,0.16); }
+
+.with-sidebar main { margin-left: 260px; }
+
+/* Violet theme for slider pages */
+.violet-theme {
+  --violet-900: #3b0764;
+  --violet-700: #5a0f9c;
+  --violet-500: #7c2bd6;
+  --violet-300: #b89ff3;
+  --violet-100: #efe6ff;
+  color: #fff;
+  background: linear-gradient(180deg,var(--violet-700), var(--violet-900));
+  min-height: 100vh;
+}
+
+.violet-theme .content-wrapper,
+.violet-theme main { background: linear-gradient(180deg,var(--violet-100), #fff); color: #2b1147; }
+.violet-theme h1, .violet-theme h2 { color: var(--violet-700); }
+
+.btn-violet {
+  background: linear-gradient(90deg,var(--violet-700), var(--violet-500));
+  border: 1px solid rgba(124,43,214,0.9);
+  color: #fff;
+}
+.btn-violet:hover { filter: brightness(0.95); transform: translateY(-1px); }
+
+.table thead { background: linear-gradient(90deg,var(--violet-700), var(--violet-500)); color: #fff; }
+.table thead th { border-color: rgba(255,255,255,0.08); }
+
+.card { border: 1px solid rgba(124,43,214,0.12); }
+.card .card-body { color: #3b0764; }
+
+/* small tweaks for slider images */
+.table img, .card img { border-radius: 8px; box-shadow: 0 6px 18px rgba(124,43,214,0.12); }
+
+/* utility to keep main content readable when using violet background */
+.violet-main { background: #fff; padding: 24px; border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,0.04); }
+
+/* Machine list specific tweaks */
+.machine-table thead { background: linear-gradient(90deg,var(--violet-700), var(--violet-500)); color: #fff; }
+.btn-violet-outline {
+  background: transparent;
+  border: 1px solid var(--violet-500);
+  color: var(--violet-700);
+}
+.btn-violet-outline:hover {
+  background: var(--violet-300);
+  color: var(--violet-900);
+}
+
+/* Ensure danger button still looks distinct */
+.btn-danger { background-color: #dc3545; border: none; }
+.btn-danger:hover { background-color: #bb2d3b; }

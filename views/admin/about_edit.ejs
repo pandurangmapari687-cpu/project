@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit About</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+  <h2 class="mb-4 text-primary">Edit About</h2>
+
+  <form action="/admin/update_about/<%= about.about_id %>" method="post" enctype="multipart/form-data" class="p-4 bg-white shadow rounded">
+    
+    <div class="mb-3">
+      <label for="title" class="form-label fw-bold">Title</label>
+      <input type="text" name="title" id="title" class="form-control" value="<%= about.title %>" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="background" class="form-label fw-bold">Background Image</label>
+      <input type="file" name="background" id="background" class="form-control">
+      <% if(about.background) { %>
+        <p class="mt-2">
+          Current: 
+          <a href="/uploads/<%= about.background %>" target="_blank">
+            <img src="/uploads/<%= about.background %>" alt="Background" style="width:100px; height:auto;">
+          </a>
+        </p>
+        <input type="hidden" name="old_bg" value="<%= about.background %>">
+      <% } %>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label fw-bold">Description</label>
+      <textarea name="description" id="description" class="form-control" rows="5" required><%= about.description %></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="name" class="form-label fw-bold">Name</label>
+      <input type="text" name="name" id="name" class="form-control" value="<%= about.name %>" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Update About</button>
+  </form>
+</div>
+
+</body>
+</html>

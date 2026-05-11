@@ -1,0 +1,263 @@
+<!-- Font Awesome Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+  :root {
+    --main-color: #ff5722;    /* Default icon color */
+    --hover-color: #ff9800;   /* Hover/active color */
+    --sidebar-bg: #2b2b3d;    /* Sidebar background */
+  }
+
+  /* Sidebar Styles */
+  #adminSidebar {
+    min-width: 220px;
+    max-width: 220px;
+    min-height: 100vh;
+    background: var(--sidebar-bg);
+    color: #fff;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    transition: left 0.3s;
+  }
+
+  #adminSidebar .nav-link {
+    color: #fff;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+
+  #adminSidebar .nav-link i {
+    color: var(--main-color);
+    transition: 0.3s;
+    min-width: 20px;
+    text-align: center;
+  }
+
+  #adminSidebar .nav-link.active,
+  #adminSidebar .nav-link:hover {
+    background: #3c3c50;
+    color: var(--hover-color);
+  }
+
+  #adminSidebar .nav-link.active i,
+  #adminSidebar .nav-link:hover i {
+    color: var(--hover-color);
+  }
+
+  #adminContent {
+    margin-left: 220px;
+    padding: 2rem;
+  }
+
+  .submenu {
+    list-style: none;
+    padding-left: 30px;
+  }
+
+  .submenu .nav-link {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 200;
+    font-size: 1.5rem;
+    color: var(--main-color);
+  }
+
+  @media (max-width: 768px) {
+    #adminSidebar { left: -220px; }
+    #adminSidebar.active { left: 0; }
+    #adminContent { margin-left: 0; }
+    .sidebar-toggle { display: block; }
+  }
+</style>
+
+<!-- Sidebar Toggle Button -->
+<button class="btn sidebar-toggle d-md-none">
+  <i class="fas fa-bars"></i>
+</button>
+
+<!-- Sidebar -->
+<nav id="adminSidebar" class="d-flex flex-column p-3 text-white">
+  <h3 class="mb-4" style="color:var(--main-color);">
+    <i class="fas fa-tools"></i> Admin Panel
+  </h3>
+
+  <ul class="nav nav-pills flex-column mb-auto">
+
+    <!-- Dashboard -->
+    <li class="nav-item">
+      <a href="/admin" class="nav-link active"><i class="fas fa-house-user"></i> Dashboard</a>
+    </li>
+
+    <!-- Machine -->
+    <li class="nav-item">
+      <a href="#machineSubmenu" data-bs-toggle="collapse" class="nav-link text-white">
+        <i class="fas fa-cogs"></i> Machine
+        <i class="fas fa-angle-down float-end"></i>
+      </a>
+      <ul id="machineSubmenu" class="collapse list-unstyled ps-3">
+        <li><a href="/admin/machine" class="nav-link text-white"><i class="fas fa-plus-circle"></i> Add Machine</a></li>
+        <li><a href="/admin/machine_list" class="nav-link text-white"><i class="fas fa-list-ol"></i> List Machine</a></li>
+      </ul>
+    </li>
+
+    <!-- Slider -->
+    <li class="nav-item">
+      <a href="#sliderSubmenu" data-bs-toggle="collapse" class="nav-link text-white">
+        <i class="fas fa-images"></i> Slider
+        <i class="fas fa-angle-down float-end"></i>
+      </a>
+      <ul id="sliderSubmenu" class="collapse list-unstyled ps-3">
+        <li><a href="/admin/slider" class="nav-link text-white"><i class="fas fa-plus-circle"></i> Add Slider</a></li>
+        <li><a href="/admin/slider_list" class="nav-link text-white"><i class="fas fa-th-list"></i> List Slider</a></li>
+      </ul>
+    </li>
+
+    <!-- About -->
+    <li class="nav-item">
+      <a href="#aboutSubmenu" data-bs-toggle="collapse" class="nav-link text-white">
+        <i class="fas fa-info-circle"></i> About
+        <i class="fas fa-angle-down float-end"></i>
+      </a>
+      <ul id="aboutSubmenu" class="collapse list-unstyled ps-3">
+        <li><a href="/admin/about" class="nav-link text-white"><i class="fas fa-plus-circle"></i> Add About</a></li>
+        <li><a href="/admin/about_list" class="nav-link text-white"><i class="fas fa-list-ol"></i> List About</a></li>
+      </ul>
+    </li>
+
+    <!-- Counter -->
+    <li class="nav-item">
+      <a href="#counterSubmenu" data-bs-toggle="collapse" class="nav-link text-white">
+        <i class="fas fa-chart-bar"></i> Counter
+        <i class="fas fa-angle-down float-end"></i>
+      </a>
+      <ul id="counterSubmenu" class="collapse list-unstyled ps-3">
+        <li><a href="/admin/counter" class="nav-link text-white"><i class="fas fa-plus-circle"></i> Add Counter</a></li>
+        <li><a href="/admin/counter_list" class="nav-link text-white"><i class="fas fa-list-ol"></i> List Counter</a></li>
+      </ul>
+    </li>
+
+    <!-- Working Process -->
+    <li class="nav-item">
+      <a href="#workSubmenu" data-bs-toggle="collapse" class="nav-link text-white">
+        <i class="fas fa-project-diagram"></i> Working Process
+        <i class="fas fa-angle-down float-end"></i>
+      </a>
+      <ul id="workSubmenu" class="collapse list-unstyled ps-3">
+        <li><a href="/admin/workingprocess" class="nav-link text-white"><i class="fas fa-plus-circle"></i> Add Process</a></li>
+        <li><a href="/admin/workingprocess_list" class="nav-link text-white"><i class="fas fa-list-ol"></i> List Process</a></li>
+      </ul>
+    </li>
+
+    <!-- News Blog -->
+    <li class="nav-item">
+      <a href="#newsSubmenu" data-bs-toggle="collapse" class="nav-link text-white">
+        <i class="fas fa-newspaper"></i> News Blog
+        <i class="fas fa-angle-down float-end"></i>
+      </a>
+      <ul id="newsSubmenu" class="collapse list-unstyled ps-3">
+        <li><a href="/admin/newsblog" class="nav-link text-white"><i class="fas fa-plus-circle"></i> Add News</a></li>
+        <li><a href="/admin/newsblog_list" class="nav-link text-white"><i class="fas fa-list-ol"></i> List News</a></li>
+      </ul>
+    </li>
+
+    <!-- Testimonials -->
+    <li class="nav-item">
+      <a href="#testiSubmenu" data-bs-toggle="collapse" class="nav-link text-white">
+        <i class="fas fa-comments"></i> Testimonials
+        <i class="fas fa-angle-down float-end"></i>
+      </a>
+      <ul id="testiSubmenu" class="collapse list-unstyled ps-3">
+        <li><a href="/admin/testimonials" class="nav-link text-white"><i class="fas fa-plus-circle"></i> Add Testimonial</a></li>
+        <li><a href="/admin/testimonials_list" class="nav-link text-white"><i class="fas fa-list-ol"></i> List Testimonials</a></li>
+      </ul>
+    </li>
+
+    <!-- FAQ -->
+    <li class="nav-item">
+      <a href="#faqSubmenu" data-bs-toggle="collapse" class="nav-link text-white">
+        <i class="fas fa-question-circle"></i> FAQ
+        <i class="fas fa-angle-down float-end"></i>
+      </a>
+      <ul id="faqSubmenu" class="collapse list-unstyled ps-3">
+        <li><a href="/admin/faq" class="nav-link text-white"><i class="fas fa-plus-circle"></i> Add FAQ</a></li>
+        <li><a href="/admin/faq_list" class="nav-link text-white"><i class="fas fa-list-ol"></i> List FAQ</a></li>
+      </ul>
+    </li>
+
+    <!-- Services -->
+    <li class="nav-item">
+      <a href="#servicesSubmenu" data-bs-toggle="collapse" class="nav-link text-white">
+        <i class="fas fa-briefcase"></i> Services
+        <i class="fas fa-angle-down float-end"></i>
+      </a>
+      <ul id="servicesSubmenu" class="collapse list-unstyled ps-3">
+        <li><a href="/admin/services" class="nav-link text-white"><i class="fas fa-plus-circle"></i> Add Service</a></li>
+        <li><a href="/admin/services_list" class="nav-link text-white"><i class="fas fa-list-ol"></i> List Services</a></li>
+      </ul>
+    </li>
+
+    <!-- Contact -->
+    <li class="nav-item">
+      <a href="#contactSubmenu" data-bs-toggle="collapse" class="nav-link text-white">
+        <i class="fas fa-envelope-open-text"></i> Contact
+        <i class="fas fa-angle-down float-end"></i>
+      </a>
+      <ul id="contactSubmenu" class="collapse list-unstyled ps-3">
+        <li><a href="/admin/contact" class="nav-link text-white"><i class="fas fa-plus-circle"></i> Add Contact</a></li>
+        <li><a href="/admin/contact_list" class="nav-link text-white"><i class="fas fa-list-ol"></i> List Contacts</a></li>
+      </ul>
+    </li>
+
+    <!-- Gallery -->
+    <li class="nav-item">
+      <a href="#gallerySubmenu" data-bs-toggle="collapse" class="nav-link text-white">
+        <i class="fas fa-photo-film"></i> Gallery
+        <i class="fas fa-angle-down float-end"></i>
+      </a>
+      <ul id="gallerySubmenu" class="collapse list-unstyled ps-3">
+        <li><a href="/admin/gallery" class="nav-link text-white"><i class="fas fa-plus-circle"></i> Add Image</a></li>
+        <li><a href="/admin/gallery_list" class="nav-link text-white"><i class="fas fa-list-ol"></i> List Images</a></li>
+      </ul>
+    </li>
+
+    <!-- Plants -->
+    <li class="nav-item">
+      <a href="#plantsSubmenu" data-bs-toggle="collapse" class="nav-link text-white">
+        <i class="fas fa-leaf"></i> Plants
+        <i class="fas fa-angle-down float-end"></i>
+      </a>
+      <ul id="plantsSubmenu" class="collapse list-unstyled ps-3">
+        <li><a href="/admin/plants" class="nav-link text-white"><i class="fas fa-plus-circle"></i> Add Plant</a></li>
+        <li><a href="/admin/plants_list" class="nav-link text-white"><i class="fas fa-list-ol"></i> List Plants</a></li>
+      </ul>
+    </li>
+
+    <!-- Settings -->
+    <li><a href="/admin/settings" class="nav-link text-white"><i class="fas fa-sliders-h"></i> Settings</a></li>
+
+    <!-- Login / Logout -->
+    <li><a href="/admin/login" class="nav-link text-white"><i class="fas fa-user-circle"></i> Login</a></li>
+    <li><a href="/admin/logout" class="nav-link text-white"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+
+  </ul>
+</nav>
+
+<script>
+  // Sidebar Toggle (Mobile)
+  document.querySelector('.sidebar-toggle').addEventListener('click', () => {
+    document.querySelector('#adminSidebar').classList.toggle('active');
+  });
+</script>
